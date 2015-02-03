@@ -8,6 +8,8 @@ gem 'sqlite3'
 # author: Matthew Bianchi
 # Use postgresql as the database for Active Record
 gem 'pg'
+# Use Bootstrap to style website
+gem 'twitter-bootstrap-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

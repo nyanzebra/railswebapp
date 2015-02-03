@@ -1,7 +1,21 @@
-<tbody>
-  <% @products.each do |prod|%>
-    <tr>
-      <th><%= prod.location %></th>
-    </tr>
-  <% end %>
-</tbody>
+<!-- Matthew -->
+<div class="container">
+	<!-- Main component for a primary marketing message or call to action -->
+	<div class="jumbotron">
+		<h1>List of Products</h1>
+		<table>
+			<tr>
+      	<th>Location</th>
+      	<th>Serial Num</th>
+    	</tr>
+  		<% @products.each do |prod|%>
+     	<tr>
+    		<td><%= prod.location %></td>
+    		<td style="text-align:right;"><%= prod.serial_num %></td>
+    	</tr>
+  		<% end %>
+		</table>
+		</p>
+	</div>
+</div> <!-- /container -->
+<!-- END -->
