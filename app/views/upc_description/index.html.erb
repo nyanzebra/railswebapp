@@ -1,0 +1,29 @@
+<!-- Matthew -->
+<div class="container">
+	<!-- Main component for a primary marketing message or call to action -->
+	<div class="jumbotron">
+		<h1>List of Products</h1>
+		<table>
+			<tr>
+				<th>UPC</th>
+				<th>Vendor</th>
+				<th>Size</th>
+      	<th>Location</th>
+      	<th>Serial Num</th>
+    	</tr>
+  		<% for upc in @upcs %>
+  			<% for prod in upc.products %>
+	     	<tr>
+	     		<td><%= upc.upc %></td>
+	     		<td><%= upc.vendor %></td>
+	     		<td><%= upc.sizeof %></td>
+	    		<td><%= prod.location %></td>
+	    		<td style="text-align:right;"><%= prod.serial_num %></td>
+	    	</tr>
+	  		<% end %>
+	  	<% end %>
+		</table>
+		</p>
+	</div>
+</div> <!-- /container -->
+<!-- END -->
