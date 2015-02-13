@@ -6,6 +6,8 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+2.* is preferred for gem compatibility (spring and byebug work in development group)
+1.8+ works for production server (do not use development group gems)
 
 * System dependencies
 

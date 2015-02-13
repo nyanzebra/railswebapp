@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  get 'home/index'
+  get 'upc_description/men'
   get 'upc_description/index'
 
   get 'product/index'
-  root 'upc_description#index'
+  root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

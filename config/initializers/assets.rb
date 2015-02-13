@@ -9,3 +9,6 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+# author: Matthew and Sean
+# Need to precompile css file for bootstap theme in order for rails to use it
+Rails.application.config.assets.precompile += %w( cerulean.css simple-sidebar.css )
