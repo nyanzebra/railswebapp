@@ -3,7 +3,7 @@
 	<!-- Main component for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<h1>List of Products</h1>
-		<table>
+		<table class="table table-striped table-hover">
 			<tr>
 				<th>UPC</th>
 				<th>Vendor</th>
@@ -24,7 +24,7 @@
 	     		<td><%= upc.style %></td>
 	     		<td><%= upc.color %></td>
 	    		<td><%= prod.location %></td>
-	    		<td style="text-align:right;"><%= prod.serial_num %></td>
+	    		<td><%= prod.serial_num %></td>
 	    	</tr>
 	  		<% end %>
 	  	<% end %>
