@@ -1,14 +1,12 @@
 source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
 # author: Matthew Bianchi
 # Use postgresql as the database for Active Record
 gem 'pg'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # Javascript runtime for bootstrap on Ubuntu and Windows
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 # Use Bootstrap to style website
 gem 'twitter-bootstrap-rails'
 # end edits by Matthew
