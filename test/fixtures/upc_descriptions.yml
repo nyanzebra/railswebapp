@@ -4,8 +4,20 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+wrangler_upc:
+  upc: 051071851756
+  vendor: Wrangler
+  sizeof: 50/30
+  fit: stretch
+  style: jeans
+  color: blue
+  gener: Men
+
+rustler_upc:
+  upc: 672787789760
+  vendor: Wrangler
+  sizeof: 33/30
+  fit: classic
+  style: jeans
+  color: blue
+  gener: Men
