@@ -6,8 +6,6 @@
 
 # Ignore bundler config.
 /.bundle
-Gemfile
-Gemfile.lock
 .env
 
 # Ignore the default SQLite database.
