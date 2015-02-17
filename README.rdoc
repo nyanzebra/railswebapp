@@ -1,8 +1,18 @@
 == README
 Mobile-friendly website for Senior Design
----
 === Ruby / Rails Installation
-This website guides you through installations far better than I ever could: http://installrails.com
+---
+This website guides you through installations far better than I ever could: 
+  http://installrails.com
+=== Running the application
+---
+  git clone https://github.com/mattbianchi/railswebapp
+  cd railswebapp
+  bundle install
+  rails server
+
+Open browser to:
+  http://localhost:3000
 ---
 ==== Ruby version
 * 2.* is preferred for gem compatibility (spring and byebug work in development group)
@@ -22,5 +32,5 @@ This website guides you through installations far better than I ever could: http
 
 ==== Deployment instructions
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Please feel free to use a different markup language if you do not plan to run:
+  rake doc:app
