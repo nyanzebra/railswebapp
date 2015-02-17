@@ -5,8 +5,8 @@ Mobile-friendly website for Senior Design
 This website guides you through installations far better than I ever could: http://installrails.com
 ---
 ==== Ruby version
-* 2./* is preferred for gem compatibility (spring and byebug work in development group)
-* 1.8+ works for production server (do not use development group gems)
+* 2.* is preferred for gem compatibility (spring and byebug work in development group)
+* 1.9+ works for production server (do not use development group gems)
 
 ==== System dependencies
 
