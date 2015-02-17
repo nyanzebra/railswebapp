@@ -2,21 +2,28 @@
 Mobile-friendly website for Senior Design
 === Ruby / Rails Installation
 ---
-This website guides you through installations far better than I ever could: 
+This website guides you through installations far better than I ever could:
   http://installrails.com
-=== Running the application
+=== Running the application locally
 ---
+Install Heroku tools
+  https://toolbelt.heroku.com/
+Get code
   git clone https://github.com/mattbianchi/railswebapp
   cd railswebapp
+Install necessary gems
   bundle install
-  rails server
-
+Use forman to run the app
+  foreman start
 Open browser to:
   http://localhost:3000
+=== Deploying to Heroku
 ---
+  git push heroku <branch_name_tobe_deployed>:master
+  heroku open
 ==== Ruby version
-* 2.* is preferred for gem compatibility (spring and byebug work in development group)
-* 1.9+ works for production server (do not use development group gems)
+---
+* 2.* is preferred
 
 ==== System dependencies
 
