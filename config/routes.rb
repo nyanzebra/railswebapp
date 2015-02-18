@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :upc_descriptions, only: [:index, :show]
   get 'home/index'
   get 'upc_description/men'
   get 'upc_description/index'

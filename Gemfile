@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+##
 # author: Matthew Bianchi
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -12,7 +13,10 @@ gem 'twitter-bootstrap-rails'
 # used for Heroku
 gem 'rails_12factor', group: :production
 gem 'puma', group: :production
+# for web api 'respond_with'
+gem 'responders', '~> 2.0'
 # end edits by Matthew
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
