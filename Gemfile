@@ -1,20 +1,21 @@
 source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+
 ##
 # author: Matthew Bianchi
 # Use postgresql as the database for Active Record
 gem 'pg'
+
+# Use Bootstrap to style website
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # Javascript runtime for bootstrap on Ubuntu and Windows
 gem 'therubyracer', platforms: :ruby, group: :production
-# Use Bootstrap to style website
 gem 'twitter-bootstrap-rails'
+
 # used for Heroku
 gem 'rails_12factor', group: :production
 gem 'puma', group: :production
-# for web api 'respond_with'
-gem 'responders', '~> 2.0'
 # end edits by Matthew
 
 # Use SCSS for stylesheets

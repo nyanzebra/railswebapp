@@ -26,18 +26,29 @@ Open browser to:
 * 2.* is preferred
 
 ==== System dependencies
-
+* If on windows or ubuntu, make sure
+  gem 'rubyracer'
+is in the Gemfile
 ==== Configuration
-
+None yet
 ==== Database creation
-
+  psql postgres
+  CREATE ROLE rfidweb WITH CREATEDB LOGIN PASSWORD 'rfidweb';
+  \q
+  psql postgres rfidweb
+  CREATE DATABASE rfidbdev;
+  \q
 ==== Database initialization
-
+  rake db:migrate
+  rake db:seed
 ==== How to run the test suite
-
+  rake test
 ==== Services (job queues, cache servers, search engines, etc.)
 
 ==== Deployment instructions
+  git push origin master
+Then travis will test the code.
+Then Heroku will host code if build succeeds.
 
 Please feel free to use a different markup language if you do not plan to run:
   rake doc:app

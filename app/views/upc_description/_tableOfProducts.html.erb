@@ -1,0 +1,32 @@
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>UPC</th>
+				<th>Vendor</th>
+				<th>Size</th>
+				<th>Fit</th>
+				<th>Style</th>
+				<th>Color</th>
+      	<th>Location</th>
+      	<th>Serial Num</th>
+  		</tr>
+		</thead>
+		<tbody>
+    	<% for upc in @upcs %>
+  			<% for prod in upc.products %>
+	     	<tr>
+	     		<td><%= upc.upc %></td>
+	     		<td><%= upc.vendor %></td>
+	     		<td><%= upc.sizeof %></td>
+	     		<td><%= upc.fit %></td>
+	     		<td><%= upc.style %></td>
+	     		<td><%= upc.color %></td>
+	    		<td><%= prod.location %></td>
+	    		<td><%= prod.serial_num %></td>
+	    	</tr>
+	  		<% end %>
+	  	<% end %>
+  	</tbody>
+	</table>
+</div>

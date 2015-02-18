@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  resources :upc_descriptions, only: [:index, :show]
+  #author: Matthew Bianchi
+  namespace :api do
+    resources :upc_descriptions, only: [:index, :show]
+  end
   get 'home/index'
-  get 'upc_description/men'
+  #get 'home/about'
+  #get 'home/contact'
   get 'upc_description/index'
+  get 'upc_description/men'
+  get 'upc_description/women'
 
-  get 'product/index'
+  #get 'product/index'
   root 'home#index'
+  #end Matthew Bianchi
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
