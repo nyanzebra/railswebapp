@@ -8,4 +8,5 @@ class ProductTest < ActiveSupport::TestCase
     example = products(:wrangler)
     product = Product.find(1)
     assert_same example, product, "Product was not in test data"
+  end
 end

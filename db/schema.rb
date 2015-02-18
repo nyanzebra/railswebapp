@@ -17,24 +17,22 @@ ActiveRecord::Schema.define(version: 20150217174005) do
   enable_extension "plpgsql"
 
   create_table "products", force: :cascade do |t|
-    t.integer  "upc_description_id"
-    t.integer  "serial_num",         limit: 8
-    t.text     "location"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer "upc_description_id"
+    t.integer "serial_num",         limit: 8, null: false
+    t.text    "location",                     null: false
   end
 
   create_table "upc_descriptions", force: :cascade do |t|
-    t.integer  "upc",        limit: 8
-    t.text     "vendor"
-    t.text     "sizeof"
-    t.text     "fit"
-    t.text     "style"
-    t.text     "color"
-    t.text     "gender"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer "upc",    limit: 8, null: false
+    t.text    "vendor"
+    t.text    "sizeof"
+    t.text    "fit"
+    t.text    "style"
+    t.text    "color"
+    t.text    "gender"
   end
 
-  add_foreign_key "products", "upc_descriptions", name: "upc_descriptions_id"
+  add_index "upc_descriptions", ["upc"], name: "upc_descriptions_upc_key", unique: true, using: :btree
+
+  add_foreign_key "products", "upc_descriptions", name: "products_upc_description_id_fkey"
 end
