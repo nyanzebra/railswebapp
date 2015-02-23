@@ -11,7 +11,7 @@ wrangler_upc:
   fit: stretch
   style: jeans
   color: blue
-  gener: Men
+  gender: Men
 
 rustler_upc:
   upc: 672787789760
@@ -20,4 +20,4 @@ rustler_upc:
   fit: classic
   style: jeans
   color: blue
-  gener: Men
+  gender: Men
