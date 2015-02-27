@@ -1,0 +1,1599 @@
+  [1m[36mActiveRecord::SchemaMigration Load (89.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (149.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (97.2ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUpcDescriptions (20150227011353)
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (99.1ms)[0m  [1mCREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) [0m
+  [1m[35m (46.0ms)[0m  CREATE  INDEX  "index_upc_descriptions_on_upc" ON "upc_descriptions"  ("upc")
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150227011353"]]
+  [1m[35m (0.0ms)[0m  COMMIT
+Migrating to CreateProducts (20150227011503)
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (90.1ms)[0m  CREATE TABLE "products" ("id" serial primary key, "serial_num" bigint NOT NULL, "location" text NOT NULL, "upc_description_id" bigint) 
+  [1m[36m (18.0ms)[0m  [1mALTER TABLE "products" ADD CONSTRAINT "products_upc_description_id_fkey"
+FOREIGN KEY ("upc_description_id")
+  REFERENCES "upc_descriptions" ("id")
+[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150227011503"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'products'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'upc_descriptions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "products"
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (51071851756, 1, 'in_store', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (672787789760, 1, 'warehouse', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "upc_descriptions"[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (51071851756, 'Wrangler', '50/30', 'stretch', 'jeans', 'blue', 'Men', 980190962)
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (672787789760, 'Wrangler', '33/30', 'classic', 'jeans', 'blue', 'Men', 298486374)[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+  [1m[36m (3.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_update_upc_description
+-----------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#update as HTML
+  Parameters: {"upc_description"=>{"color"=>"green"}, "id"=>"980190962"}
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+UpcDescriptionsControllerTest: test_should_get_index
+----------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#index as HTML
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT "upc_descriptions".* FROM "upc_descriptions"[0m
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_destroy_upc_description
+------------------------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+Processing by UpcDescriptionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (14.0ms)[0m  DELETE FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 16ms (ActiveRecord: 16.0ms)
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_show_upc_description
+---------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_create_upc_description
+-----------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#create as HTML
+  Parameters: {"upc_description"=>{}}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (24.0ms)[0m  INSERT INTO "upc_descriptions" DEFAULT VALUES RETURNING "id"
+PG::NotNullViolation: ERROR:  null value in column "upc" violates not-null constraint
+DETAIL:  Failing row contains (980190963, null, null, null, null, null, null, null).
+: INSERT INTO "upc_descriptions" DEFAULT VALUES RETURNING "id"
+  [1m[36m (1.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 28ms
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "products" DEFAULT VALUES RETURNING "id"[0m
+PG::NotNullViolation: ERROR:  null value in column "serial_num" violates not-null constraint
+DETAIL:  Failing row contains (980190963, null, null, null).
+: INSERT INTO "products" DEFAULT VALUES RETURNING "id"
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 2ms
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products"
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{}, "id"=>"980190962"}
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 3ms (ActiveRecord: 2.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "products" WHERE "products"."id" = $1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 2ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "products"
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (29.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "products"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (51071851756, 1, 'in_store', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (672787789760, 1, 'warehouse', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "upc_descriptions"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (51071851756, 'Wrangler', '50/30', 'stretch', 'jeans', 'blue', 'Men', 980190962)
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (672787789760, 'Wrangler', '33/30', 'classic', 'jeans', 'blue', 'Men', 298486374)[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+----------------------------------------------------
+UpcDescriptionsControllerTest: test_should_get_index
+----------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#index as HTML
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT "upc_descriptions".* FROM "upc_descriptions"
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_show_upc_description
+---------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_create_upc_description
+-----------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#create as HTML
+  Parameters: {"upc_description"=>{"upc"=>"51071851757", "vendor"=>"me", "sizeof"=>"32/30", "fit"=>"classic", "style"=>"shorts", "color"=>"red", "gender"=>"women"}}
+Completed 500 Internal Server Error in 0ms
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_destroy_upc_description
+------------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 3ms (ActiveRecord: 3.0ms)
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_update_upc_description
+-----------------------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#update as HTML
+  Parameters: {"upc_description"=>{"color"=>"green"}, "id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 3ms
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  BEGIN
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "products"
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{}}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "products" DEFAULT VALUES RETURNING "id"
+PG::NotNullViolation: ERROR:  null value in column "serial_num" violates not-null constraint
+DETAIL:  Failing row contains (980190963, null, null, null).
+: INSERT INTO "products" DEFAULT VALUES RETURNING "id"
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 5ms
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "products" WHERE "products"."id" = $1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 2ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "products"
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{}, "id"=>"980190962"}
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 2ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products"[0m
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (61.2ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "products"
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (51071851756, 1, 'in_store', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (672787789760, 1, 'warehouse', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "upc_descriptions"[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (51071851756, 'Wrangler', '50/30', 'stretch', 'jeans', 'blue', 'Men', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (672787789760, 'Wrangler', '33/30', 'classic', 'jeans', 'blue', 'Men', 298486374)[0m
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_create_upc_description
+-----------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#create as HTML
+  Parameters: {"upc_description"=>{"upc"=>"51071851757", "vendor"=>"me", "sizeof"=>"32/30", "fit"=>"classic", "style"=>"shorts", "color"=>"red", "gender"=>"women"}}
+Completed 500 Internal Server Error in 0ms
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  BEGIN
+------------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_destroy_upc_description
+------------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 3ms (ActiveRecord: 2.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_update_upc_description
+-----------------------------------------------------------------
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#update as HTML
+  Parameters: {"upc_description"=>{"color"=>"green"}, "id"=>"980190962"}
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 3ms
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_show_upc_description
+---------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+----------------------------------------------------
+UpcDescriptionsControllerTest: test_should_get_index
+----------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#index as HTML
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT "upc_descriptions".* FROM "upc_descriptions"
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "products"
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"upc_description_id"=>"51071851757", "serial_num"=>"1", "location"=>"in_store"}}
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products"
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "products"
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 2ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 2ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms)
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (25.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "products"
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (51071851756, 1, 'in_store', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (672787789760, 1, 'warehouse', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "upc_descriptions"[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (51071851756, 'Wrangler', '50/30', 'stretch', 'jeans', 'blue', 'Men', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (672787789760, 'Wrangler', '33/30', 'classic', 'jeans', 'blue', 'Men', 298486374)[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_create_upc_description
+-----------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#create as HTML
+  Parameters: {"upc_description"=>{"upc"=>"51071851757", "vendor"=>"me", "sizeof"=>"32/30", "fit"=>"classic", "style"=>"shorts", "color"=>"red", "gender"=>"women"}}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["upc", 51071851757], ["vendor", "me"], ["sizeof", "32/30"], ["fit", "classic"], ["style", "shorts"], ["color", "red"], ["gender", "women"]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 8ms (Views: 1.0ms | ActiveRecord: 2.0ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_update_upc_description
+-----------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#update as HTML
+  Parameters: {"upc_description"=>{"color"=>"green"}, "id"=>"980190962"}
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "upc_descriptions" SET "color" = $1 WHERE "upc_descriptions"."id" = $2[0m  [["color", "green"], ["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 4ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+----------------------------------------------------
+UpcDescriptionsControllerTest: test_should_get_index
+----------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#index as HTML
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT "upc_descriptions".* FROM "upc_descriptions"
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_show_upc_description
+---------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_destroy_upc_description
+------------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 3ms (ActiveRecord: 2.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"upc_description_id"=>"51071851757", "serial_num"=>"1", "location"=>"in_store"}}
+Completed 500 Internal Server Error in 0ms
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "products" WHERE "products"."id" = $1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 2ms (ActiveRecord: 0.0ms)
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "products"
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products"
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  BEGIN
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{}, "id"=>"980190962"}
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 3ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (20.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "products"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (51071851756, 1, 'in_store', 980190962)[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (672787789760, 1, 'warehouse', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "upc_descriptions"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (51071851756, 'Wrangler', '50/30', 'stretch', 'jeans', 'blue', 'Men', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (672787789760, 'Wrangler', '33/30', 'classic', 'jeans', 'blue', 'Men', 298486374)[0m
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (1.0ms)[0m  BEGIN
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{}, "id"=>"980190962"}
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 5ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products"[0m
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"upc_description_id"=>"51071851757", "serial_num"=>"1", "location"=>"in_store"}}
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (10.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"[0m  [["upc_description_id", 51071851757], ["serial_num", 1], ["location", "in_store"]]
+PG::ForeignKeyViolation: ERROR:  insert or update on table "products" violates foreign key constraint "products_upc_description_id_fkey"
+DETAIL:  Key (upc_description_id)=(51071851757) is not present in table "upc_descriptions".
+: INSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 12ms
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "products"
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 2ms (ActiveRecord: 2.0ms)
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_destroy_upc_description
+------------------------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+Processing by UpcDescriptionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 3ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_create_upc_description
+-----------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#create as HTML
+  Parameters: {"upc_description"=>{"upc"=>"51071851757", "vendor"=>"me", "sizeof"=>"32/30", "fit"=>"classic", "style"=>"shorts", "color"=>"red", "gender"=>"women"}}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["upc", 51071851757], ["vendor", "me"], ["sizeof", "32/30"], ["fit", "classic"], ["style", "shorts"], ["color", "red"], ["gender", "women"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 5ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_show_upc_description
+---------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+----------------------------------------------------
+UpcDescriptionsControllerTest: test_should_get_index
+----------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#index as HTML
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT "upc_descriptions".* FROM "upc_descriptions"
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_update_upc_description
+-----------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#update as HTML
+  Parameters: {"upc_description"=>{"color"=>"green"}, "id"=>"980190962"}
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "upc_descriptions" SET "color" = $1 WHERE "upc_descriptions"."id" = $2[0m  [["color", "green"], ["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 4ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (31.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "products"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (51071851756, 1, 'in_store', 980190962)[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (672787789760, 1, 'warehouse', 298486374)
+  [1m[36mFixture Delete (0.0ms)[0m  [1mDELETE FROM "upc_descriptions"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (51071851756, 'Wrangler', '50/30', 'stretch', 'jeans', 'blue', 'Men', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (672787789760, 'Wrangler', '33/30', 'classic', 'jeans', 'blue', 'Men', 298486374)[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_create_upc_description
+-----------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#create as HTML
+  Parameters: {"upc_description"=>{"upc"=>"51071851757", "vendor"=>"me", "sizeof"=>"32/30", "fit"=>"classic", "style"=>"shorts", "color"=>"red", "gender"=>"women"}}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["upc", 51071851757], ["vendor", "me"], ["sizeof", "32/30"], ["fit", "classic"], ["style", "shorts"], ["color", "red"], ["gender", "women"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 9ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_destroy_upc_description
+------------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 4ms (ActiveRecord: 2.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_show_upc_description
+---------------------------------------------------------------
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+UpcDescriptionsControllerTest: test_should_get_index
+----------------------------------------------------
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#index as HTML
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT "upc_descriptions".* FROM "upc_descriptions"[0m
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_update_upc_description
+-----------------------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#update as HTML
+  Parameters: {"upc_description"=>{"color"=>"green"}, "id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "upc_descriptions" SET "color" = $1 WHERE "upc_descriptions"."id" = $2  [["color", "green"], ["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 4ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products"[0m
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"upc_description_id"=>"51071851757", "serial_num"=>"1", "location"=>"in_store"}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"[0m  [["upc_description_id", 51071851757], ["serial_num", 1], ["location", "in_store"]]
+PG::ForeignKeyViolation: ERROR:  insert or update on table "products" violates foreign key constraint "products_upc_description_id_fkey"
+DETAIL:  Key (upc_description_id)=(51071851757) is not present in table "upc_descriptions".
+: INSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"
+  [1m[35m (1.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 4ms
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "products"
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 3ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"location"=>"display"}, "id"=>"980190962"}
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "products" SET "location" = $1 WHERE "products"."id" = $2  [["location", "display"], ["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 4ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (66.1ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "products"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (51071851756, 1, 'in_store', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (672787789760, 1, 'warehouse', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "upc_descriptions"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (51071851756, 'Wrangler', '50/30', 'stretch', 'jeans', 'blue', 'Men', 980190962)
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (672787789760, 'Wrangler', '33/30', 'classic', 'jeans', 'blue', 'Men', 298486374)[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"location"=>"display"}, "id"=>"980190962"}
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "products" SET "location" = $1 WHERE "products"."id" = $2[0m  [["location", "display"], ["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 7ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (1.0ms)[0m  SELECT "products".* FROM "products"
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "products"
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 3ms (ActiveRecord: 2.0ms)
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"upc_description_id"=>"51071851756", "serial_num"=>"1", "location"=>"in_store"}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"[0m  [["upc_description_id", 51071851756], ["serial_num", 1], ["location", "in_store"]]
+PG::ForeignKeyViolation: ERROR:  insert or update on table "products" violates foreign key constraint "products_upc_description_id_fkey"
+DETAIL:  Key (upc_description_id)=(51071851756) is not present in table "upc_descriptions".
+: INSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 4ms
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  BEGIN
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_create_upc_description
+-----------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#create as HTML
+  Parameters: {"upc_description"=>{"upc"=>"51071851756", "vendor"=>"me", "sizeof"=>"32/30", "fit"=>"classic", "style"=>"shorts", "color"=>"red", "gender"=>"women"}}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["upc", 51071851756], ["vendor", "me"], ["sizeof", "32/30"], ["fit", "classic"], ["style", "shorts"], ["color", "red"], ["gender", "women"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 5ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_destroy_upc_description
+------------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms)
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+UpcDescriptionsControllerTest: test_should_get_index
+----------------------------------------------------
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#index as HTML
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT "upc_descriptions".* FROM "upc_descriptions"[0m
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_show_upc_description
+---------------------------------------------------------------
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_update_upc_description
+-----------------------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#update as HTML
+  Parameters: {"upc_description"=>{"color"=>"green"}, "id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "upc_descriptions" SET "color" = $1 WHERE "upc_descriptions"."id" = $2  [["color", "green"], ["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 3ms (ActiveRecord: 2.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (29.2ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "products"
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (51071851756, 1, 'in_store', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (672787789760, 1, 'warehouse', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "upc_descriptions"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (51071851756, 'Wrangler', '50/30', 'stretch', 'jeans', 'blue', 'Men', 980190962)
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (672787789760, 'Wrangler', '33/30', 'classic', 'jeans', 'blue', 'Men', 298486374)[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "products"
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 3ms (ActiveRecord: 2.0ms)
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"upc_description_id"=>"51071851756", "serial_num"=>"1", "location"=>"in_store"}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"[0m  [["upc_description_id", 51071851756], ["serial_num", 1], ["location", "in_store"]]
+PG::ForeignKeyViolation: ERROR:  insert or update on table "products" violates foreign key constraint "products_upc_description_id_fkey"
+DETAIL:  Key (upc_description_id)=(51071851756) is not present in table "upc_descriptions".
+: INSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 8ms
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products"
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"location"=>"display"}, "id"=>"980190962"}
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "products" SET "location" = $1 WHERE "products"."id" = $2[0m  [["location", "display"], ["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 4ms (ActiveRecord: 1.0ms)
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_update_upc_description
+-----------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#update as HTML
+  Parameters: {"upc_description"=>{"color"=>"green"}, "id"=>"980190962"}
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "upc_descriptions" SET "color" = $1 WHERE "upc_descriptions"."id" = $2[0m  [["color", "green"], ["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 4ms (ActiveRecord: 2.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_destroy_upc_description
+------------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 3ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_show_upc_description
+---------------------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_create_upc_description
+-----------------------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+Processing by UpcDescriptionsController#create as HTML
+  Parameters: {"upc_description"=>{"upc"=>"51071851756", "vendor"=>"me", "sizeof"=>"32/30", "fit"=>"classic", "style"=>"shorts", "color"=>"red", "gender"=>"women"}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["upc", 51071851756], ["vendor", "me"], ["sizeof", "32/30"], ["fit", "classic"], ["style", "shorts"], ["color", "red"], ["gender", "women"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 201 Created in 5ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+UpcDescriptionsControllerTest: test_should_get_index
+----------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#index as HTML
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT "upc_descriptions".* FROM "upc_descriptions"[0m
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (4.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'products'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'upc_descriptions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'products'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'upc_descriptions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (56.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "products"
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (51071851756, 1, 'in_store', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (672787789760, 1, 'warehouse', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "upc_descriptions"[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (51071851756, 'Wrangler', '50/30', 'stretch', 'jeans', 'blue', 'Men', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (672787789760, 'Wrangler', '33/30', 'classic', 'jeans', 'blue', 'Men', 298486374)[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+----------------------------------------------------
+UpcDescriptionsControllerTest: test_should_get_index
+----------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#index as HTML
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT "upc_descriptions".* FROM "upc_descriptions"
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_destroy_upc_description
+------------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 4ms (ActiveRecord: 2.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_update_upc_description
+-----------------------------------------------------------------
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#update as HTML
+  Parameters: {"upc_description"=>{"color"=>"green"}, "id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "upc_descriptions" SET "color" = $1 WHERE "upc_descriptions"."id" = $2  [["color", "green"], ["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 9ms (ActiveRecord: 3.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_show_upc_description
+---------------------------------------------------------------
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 2ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_create_upc_description
+-----------------------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+Processing by UpcDescriptionsController#create as HTML
+  Parameters: {"upc_description"=>{"upc"=>"51071851757", "vendor"=>"me", "sizeof"=>"32/30", "fit"=>"classic", "style"=>"shorts", "color"=>"red", "gender"=>"women"}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["upc", 51071851757], ["vendor", "me"], ["sizeof", "32/30"], ["fit", "classic"], ["style", "shorts"], ["color", "red"], ["gender", "women"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 201 Created in 6ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "products" WHERE "products"."id" = $1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 3ms (ActiveRecord: 1.0ms)
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "products"
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products"
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "products"
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"upc_description_id"=>"51071851756", "serial_num"=>"1", "location"=>"in_store"}}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"  [["upc_description_id", 51071851756], ["serial_num", 1], ["location", "in_store"]]
+PG::ForeignKeyViolation: ERROR:  insert or update on table "products" violates foreign key constraint "products_upc_description_id_fkey"
+DETAIL:  Key (upc_description_id)=(51071851756) is not present in table "upc_descriptions".
+: INSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"
+  [1m[36m (1.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 4ms
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"location"=>"display"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "products" SET "location" = $1 WHERE "products"."id" = $2  [["location", "display"], ["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (70.1ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "products"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (51071851756, 1, 'in_store', 980190962)[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (672787789760, 1, 'warehouse', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "upc_descriptions"[0m
+  [1m[35mFixture Insert (1.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (51071851756, 'Wrangler', '50/30', 'stretch', 'jeans', 'blue', 'Men', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (672787789760, 'Wrangler', '33/30', 'classic', 'jeans', 'blue', 'Men', 298486374)[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "products"
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 3ms (ActiveRecord: 2.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products"[0m
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"location"=>"display"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "products" SET "location" = $1 WHERE "products"."id" = $2  [["location", "display"], ["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 7ms (ActiveRecord: 2.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"upc_description_id"=>"672787789760", "serial_num"=>"1", "location"=>"in_store"}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"[0m  [["upc_description_id", 672787789760], ["serial_num", 1], ["location", "in_store"]]
+PG::ForeignKeyViolation: ERROR:  insert or update on table "products" violates foreign key constraint "products_upc_description_id_fkey"
+DETAIL:  Key (upc_description_id)=(672787789760) is not present in table "upc_descriptions".
+: INSERT INTO "products" ("upc_description_id", "serial_num", "location") VALUES ($1, $2, $3) RETURNING "id"
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 4ms
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_destroy_upc_description
+------------------------------------------------------------------
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 3ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+UpcDescriptionsControllerTest: test_should_get_index
+----------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#index as HTML
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT "upc_descriptions".* FROM "upc_descriptions"[0m
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_create_upc_description
+-----------------------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+Processing by UpcDescriptionsController#create as HTML
+  Parameters: {"upc_description"=>{"upc"=>"51071851757", "vendor"=>"me", "sizeof"=>"32/30", "fit"=>"classic", "style"=>"shorts", "color"=>"red", "gender"=>"women"}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["upc", 51071851757], ["vendor", "me"], ["sizeof", "32/30"], ["fit", "classic"], ["style", "shorts"], ["color", "red"], ["gender", "women"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 201 Created in 4ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_show_upc_description
+---------------------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_update_upc_description
+-----------------------------------------------------------------
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#update as HTML
+  Parameters: {"upc_description"=>{"color"=>"green"}, "id"=>"980190962"}
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "upc_descriptions" SET "color" = $1 WHERE "upc_descriptions"."id" = $2  [["color", "green"], ["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 4ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (36.0ms)[0m  ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "products"
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (51071851756, 1, 'in_store', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "products" ("upc_description_id", "serial_num", "location", "id") VALUES (672787789760, 1, 'warehouse', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM "upc_descriptions"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (51071851756, 'Wrangler', '50/30', 'stretch', 'jeans', 'blue', 'Men', 980190962)
+  [1m[36mFixture Insert (1.0ms)[0m  [1mINSERT INTO "upc_descriptions" ("upc", "vendor", "sizeof", "fit", "style", "color", "gender", "id") VALUES (672787789760, 'Wrangler', '33/30', 'classic', 'jeans', 'blue', 'Men', 298486374)[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "upc_descriptions" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+----------------------------------------------------
+UpcDescriptionsControllerTest: test_should_get_index
+----------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Processing by UpcDescriptionsController#index as HTML
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT "upc_descriptions".* FROM "upc_descriptions"
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+------------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_destroy_upc_description
+------------------------------------------------------------------
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "upc_descriptions"
+Processing by UpcDescriptionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1[0m  [["id", 980190962]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 204 No Content in 3ms (ActiveRecord: 3.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "upc_descriptions"[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_show_upc_description
+---------------------------------------------------------------
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------
+UpcDescriptionsControllerTest: test_should_update_upc_description
+-----------------------------------------------------------------
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by UpcDescriptionsController#update as HTML
+  Parameters: {"upc_description"=>{"color"=>"green"}, "id"=>"980190962"}
+  [1m[36mUpcDescription Load (0.0ms)[0m  [1mSELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT  "upc_descriptions".* FROM "upc_descriptions" WHERE "upc_descriptions"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "upc_descriptions" SET "color" = $1 WHERE "upc_descriptions"."id" = $2  [["color", "green"], ["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 7ms (ActiveRecord: 0.0ms)
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"location"=>"display"}, "id"=>"980190962"}
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "products" SET "location" = $1 WHERE "products"."id" = $2  [["location", "display"], ["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 4ms (ActiveRecord: 2.0ms)
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products"[0m
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 980190962]]
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[35mProduct Load (1.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.0ms)[0m  SELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "products" WHERE "products"."id" = $1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 2ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "products"
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+Started GET "/upc_descriptions" for ::1 at 2015-02-26 19:54:39 -0600
+Processing by UpcDescriptionsController#index as HTML
+  [1m[36mUpcDescription Load (2.0ms)[0m  [1mSELECT "upc_descriptions".* FROM "upc_descriptions"[0m
+Completed 200 OK in 55ms (Views: 17.0ms | ActiveRecord: 9.0ms)
+Started GET "/products" for ::1 at 2015-02-26 19:54:48 -0600
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (1.0ms)[0m  SELECT "products".* FROM "products"
+Completed 200 OK in 22ms (Views: 10.0ms | ActiveRecord: 7.0ms)

@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  upc_description_id: 51071851756
+  serial_num: 1
+  location: in_store
+two: 
+  upc_description_id: 672787789760
+  serial_num: 1
+  location: warehouse
