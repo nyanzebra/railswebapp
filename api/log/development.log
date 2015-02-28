@@ -1,16 +1,31 @@
 
 
-Started GET "/" for ::1 at 2015-02-26 19:17:07 -0600
+Started GET "/" for ::1 at 2015-02-27 23:07:32 -0600
 
-ActiveRecord::PendingMigrationError (
-
-Migrations are pending. To resolve this issue, run:
-
-	bin/rake db:migrate RAILS_ENV=development
-
+PG::ConnectionBad (fe_sendauth: no password supplied
 ):
-  activerecord (4.2.0) lib/active_record/migration.rb:393:in `check_pending!'
-  activerecord (4.2.0) lib/active_record/migration.rb:374:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `initialize'
+  activerecord (4.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `new'
+  activerecord (4.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `connect'
+  activerecord (4.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize'
+  activerecord (4.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new'
+  activerecord (4.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:436:in `new_connection'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:446:in `checkout_new_connection'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in `acquire_connection'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:349:in `block in checkout'
+  c:/Ruby21-x64/lib/ruby/2.1.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:348:in `checkout'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:263:in `block in connection'
+  c:/Ruby21-x64/lib/ruby/2.1.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:262:in `connection'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:565:in `retrieve_connection'
+  activerecord (4.2.0) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.2.0) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:51:in `restore_query_cache_settings'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:43:in `rescue in call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:31:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
   actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
   activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
   activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
@@ -28,163 +43,12 @@ Migrations are pending. To resolve this issue, run:
   activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
   railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
   actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
   rack (1.6.0) lib/rack/runtime.rb:18:in `call'
   activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
   rack (1.6.0) lib/rack/lock.rb:17:in `call'
   actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
-  railties (4.2.0) lib/rails/engine.rb:518:in `call'
-  railties (4.2.0) lib/rails/application.rb:164:in `call'
-  rack (1.6.0) lib/rack/lock.rb:17:in `call'
-  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
-  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
-  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
-  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
-  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
-
-
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (309.2ms)
-
-
-Started GET "/" for ::1 at 2015-02-26 19:17:08 -0600
-
-ActiveRecord::PendingMigrationError (
-
-Migrations are pending. To resolve this issue, run:
-
-	bin/rake db:migrate RAILS_ENV=development
-
-):
-  activerecord (4.2.0) lib/active_record/migration.rb:393:in `check_pending!'
-  activerecord (4.2.0) lib/active_record/migration.rb:374:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
-  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
-  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
-  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
-  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
-  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
-  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
-  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
-  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
-  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
-  rack (1.6.0) lib/rack/lock.rb:17:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
-  railties (4.2.0) lib/rails/engine.rb:518:in `call'
-  railties (4.2.0) lib/rails/application.rb:164:in `call'
-  rack (1.6.0) lib/rack/lock.rb:17:in `call'
-  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
-  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
-  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
-  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
-  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
-
-
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.0ms)
-  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Migrating to CreateUpcDescriptions (20150227011353)
-  [1m[35m (16.0ms)[0m  BEGIN
-  [1m[36m (853.2ms)[0m  [1mCREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) [0m
-PG::DuplicateTable: ERROR:  relation "upc_descriptions" already exists
-: CREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) 
-  [1m[35m (0.0ms)[0m  ROLLBACK
-
-
-Started GET "/" for ::1 at 2015-02-26 19:18:45 -0600
-  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-
-ActiveRecord::PendingMigrationError (
-
-Migrations are pending. To resolve this issue, run:
-
-	bin/rake db:migrate RAILS_ENV=development
-
-):
-  activerecord (4.2.0) lib/active_record/migration.rb:393:in `check_pending!'
-  activerecord (4.2.0) lib/active_record/migration.rb:374:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
-  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
-  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
-  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
-  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
-  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
-  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
-  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
-  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
-  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
-  rack (1.6.0) lib/rack/lock.rb:17:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
-  railties (4.2.0) lib/rails/engine.rb:518:in `call'
-  railties (4.2.0) lib/rails/application.rb:164:in `call'
-  rack (1.6.0) lib/rack/lock.rb:17:in `call'
-  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
-  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
-  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
-  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
-  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
-
-
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.0ms)
-
-
-Started GET "/" for ::1 at 2015-02-26 19:18:48 -0600
-  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
-
-ActiveRecord::PendingMigrationError (
-
-Migrations are pending. To resolve this issue, run:
-
-	bin/rake db:migrate RAILS_ENV=development
-
-):
-  activerecord (4.2.0) lib/active_record/migration.rb:393:in `check_pending!'
-  activerecord (4.2.0) lib/active_record/migration.rb:374:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
-  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
-  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
-  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
-  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
-  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
-  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
-  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
-  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
-  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
-  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
-  rack (1.6.0) lib/rack/lock.rb:17:in `call'
-  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
   railties (4.2.0) lib/rails/engine.rb:518:in `call'
   railties (4.2.0) lib/rails/application.rb:164:in `call'
   rack (1.6.0) lib/rack/lock.rb:17:in `call'
@@ -198,67 +62,406 @@ Migrations are pending. To resolve this issue, run:
   Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
   Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
   Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.0ms)
-  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Migrating to CreateUpcDescriptions (20150227011353)
-  [1m[35m (0.0ms)[0m  BEGIN
-  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) [0m
-PG::DuplicateTable: ERROR:  relation "upc_descriptions" already exists
-: CREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) 
-  [1m[35m (0.0ms)[0m  ROLLBACK
-  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Migrating to CreateUpcDescriptions (20150227011353)
-  [1m[35m (0.0ms)[0m  BEGIN
-  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) [0m
-PG::DuplicateTable: ERROR:  relation "upc_descriptions" already exists
-: CREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) 
-  [1m[35m (0.0ms)[0m  ROLLBACK
-  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Migrating to CreateUpcDescriptions (20150227011353)
-  [1m[35m (0.0ms)[0m  BEGIN
-  [1m[36m (7.0ms)[0m  [1mCREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) [0m
-PG::DuplicateTable: ERROR:  relation "upc_descriptions" already exists
-: CREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) 
-  [1m[35m (0.0ms)[0m  ROLLBACK
-  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Migrating to CreateUpcDescriptions (20150227011353)
-  [1m[35m (0.0ms)[0m  BEGIN
-  [1m[36m (7.0ms)[0m  [1mCREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) [0m
-PG::DuplicateTable: ERROR:  relation "upc_descriptions" already exists
-: CREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) 
-  [1m[35m (0.0ms)[0m  ROLLBACK
-  [1m[36m (5015.2ms)[0m  [1mDROP DATABASE IF EXISTS "rfidbdev"[0m
-PG::ObjectInUse: ERROR:  database "rfidbdev" is being accessed by other users
-DETAIL:  There is 1 other session using the database.
-: DROP DATABASE IF EXISTS "rfidbdev"
-  [1m[35m (1102.1ms)[0m  DROP DATABASE IF EXISTS "rfidbtest"
-  [1m[36m (1.0ms)[0m  [1mCREATE DATABASE "rfidbdev" ENCODING = 'utf8'[0m
-PG::DuplicateDatabase: ERROR:  database "rfidbdev" already exists
-: CREATE DATABASE "rfidbdev" ENCODING = 'utf8'
-  [1m[35m (11203.5ms)[0m  CREATE DATABASE "rfidbtest" ENCODING = 'utf8'
-  [1m[36m (766.8ms)[0m  [1mDROP DATABASE IF EXISTS "rfidbdev"[0m
-  [1m[35m (474.2ms)[0m  DROP DATABASE IF EXISTS "rfidbtest"
-  [1m[36m (6822.5ms)[0m  [1mCREATE DATABASE "rfidbdev" ENCODING = 'utf8'[0m
-  [1m[35m (5733.8ms)[0m  CREATE DATABASE "rfidbtest" ENCODING = 'utf8'
-  [1m[36m (102.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
-  [1m[35m (77.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (31.0ms)
+  [1m[36mSQL (10.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (212.8ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (113.4ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (1.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (9.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
   [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Migrating to CreateUpcDescriptions (20150227011353)
+
+
+Started GET "/api/ping" for ::1 at 2015-02-27 23:11:03 -0600
+
+
+Started GET "/" for ::1 at 2015-02-27 23:13:26 -0600
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 14218ms (Views: 14217.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-27 23:13:41 -0600
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-02-27 23:13:41 -0600
+
+
+Started GET "/assets/welcome.css?body=1" for ::1 at 2015-02-27 23:13:41 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2015-02-27 23:13:41 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-02-27 23:13:41 -0600
+
+
+Started GET "/assets/welcome.js?body=1" for ::1 at 2015-02-27 23:13:41 -0600
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2015-02-27 23:13:41 -0600
+
+
+Started GET "/" for ::1 at 2015-02-27 23:14:47 -0600
+Reload routes for changed api files
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 8ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for ::1 at 2015-02-27 23:14:47 -0600
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2015-02-27 23:14:47 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2015-02-27 23:14:48 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2015-02-27 23:14:48 -0600
+
+
+Started GET "/assets/welcome.js?body=1" for ::1 at 2015-02-27 23:14:48 -0600
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2015-02-27 23:14:48 -0600
+
+
+Started GET "/" for ::1 at 2015-02-27 23:14:50 -0600
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2015-02-27 23:14:50 -0600
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2015-02-27 23:14:50 -0600
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2015-02-27 23:14:50 -0600
+
+
+Started GET "/assets/welcome.js?body=1" for ::1 at 2015-02-27 23:14:50 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2015-02-27 23:14:50 -0600
+
+
+Started GET "/assets/welcome.css?body=1" for ::1 at 2015-02-27 23:14:50 -0600
+
+
+Started GET "/" for ::1 at 2015-02-27 23:15:03 -0600
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for ::1 at 2015-02-27 23:15:03 -0600
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2015-02-27 23:15:03 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2015-02-27 23:15:03 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2015-02-27 23:15:03 -0600
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2015-02-27 23:15:03 -0600
+
+
+Started GET "/assets/welcome.js?body=1" for ::1 at 2015-02-27 23:15:03 -0600
+
+
+Started GET "/ping" for ::1 at 2015-02-27 23:15:13 -0600
+
+ActionController::RoutingError (No route matches [GET] "/ping"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (18.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (72.1ms)
+
+
+Started GET "/api/ping" for ::1 at 2015-02-27 23:15:21 -0600
+
+
+Started GET "/api/ping" for ::1 at 2015-02-27 23:15:25 -0600
+
+
+Started GET "/api/post" for ::1 at 2015-02-27 23:15:38 -0600
+
+ActionController::RoutingError (No route matches [GET] "/api/post"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (46.0ms)
+
+
+Started GET "/api/ping" for ::1 at 2015-02-27 23:23:08 -0600
+Reload routes for changed api files
+
+NameError (uninitialized constant Rfid::Ping):
+  app/api/api.rb:4:in `<class:API>'
+  app/api/api.rb:1:in `<top (required)>'
+  config/routes.rb:3:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+  config/initializers/reload_api.rb:8:in `block in <top (required)>'
+  config/initializers/reload_api.rb:12:in `block in <top (required)>'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (25.0ms)
+
+
+Started GET "/api/ping" for ::1 at 2015-02-27 23:23:22 -0600
+
+ActionController::RoutingError (No route matches [GET] "/api/ping"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (33.0ms)
+
+
+Started GET "/api/ping" for ::1 at 2015-02-27 23:23:24 -0600
+
+ActionController::RoutingError (No route matches [GET] "/api/ping"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (32.0ms)
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-27 23:23:41 -0600
+
+ActionController::RoutingError (No route matches [GET] "/api/upc_descriptions"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (37.0ms)
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-27 23:28:40 -0600
+
+ActiveRecord::NoDatabaseError (FATAL:  database "rfidbprod" does not exist
+):
+  activerecord (4.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:661:in `rescue in connect'
+  activerecord (4.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `connect'
+  activerecord (4.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize'
+  activerecord (4.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new'
+  activerecord (4.2.0) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:436:in `new_connection'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:446:in `checkout_new_connection'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in `acquire_connection'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:349:in `block in checkout'
+  c:/Ruby21-x64/lib/ruby/2.1.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:348:in `checkout'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:263:in `block in connection'
+  c:/Ruby21-x64/lib/ruby/2.1.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:262:in `connection'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:565:in `retrieve_connection'
+  activerecord (4.2.0) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.2.0) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:51:in `restore_query_cache_settings'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:43:in `rescue in call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:31:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (89.8ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (164.2ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (20.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to UpcDescriptions (20150217173830)
   [1m[35m (0.0ms)[0m  BEGIN
-  [1m[36m (95.1ms)[0m  [1mCREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) [0m
-  [1m[35m (47.1ms)[0m  CREATE  INDEX  "index_upc_descriptions_on_upc" ON "upc_descriptions"  ("upc")
-  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150227011353"]]
-  [1m[35m (15.0ms)[0m  COMMIT
-Migrating to CreateProducts (20150227011503)
-  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
-  [1m[35m (104.3ms)[0m  CREATE TABLE "products" ("id" serial primary key, "serial_num" bigint NOT NULL, "location" text NOT NULL, "upc_description_id" bigint) 
-  [1m[36m (80.1ms)[0m  [1mALTER TABLE "products" ADD CONSTRAINT "products_upc_description_id_fkey"
+  [1m[36m (183.9ms)[0m  [1mCREATE TABLE "upc_descriptions" ("id" serial primary key, "upc" bigint NOT NULL, "vendor" text, "sizeof" text, "fit" text, "style" text, "color" text, "gender" text) [0m
+  [1m[35m (53.0ms)[0m  CREATE  INDEX  "index_upc_descriptions_on_upc" ON "upc_descriptions"  ("upc")
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150217173830"]]
+  [1m[35m (33.2ms)[0m  COMMIT
+Migrating to Products (20150219021335)
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (131.8ms)[0m  CREATE TABLE "products" ("id" serial primary key, "serial_num" bigint NOT NULL, "location" text NOT NULL, "upc_description_id" bigint) 
+  [1m[36m (25.1ms)[0m  [1mALTER TABLE "products" ADD CONSTRAINT "products_upc_description_id_fkey"
 FOREIGN KEY ("upc_description_id")
   REFERENCES "upc_descriptions" ("id")
 [0m
-  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150227011503"]]
-  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
-  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150219021335"]]
+  [1m[36m (3.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
   [1m[36m (3.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
@@ -271,7 +474,7 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
-  [1m[35m (3.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+  [1m[35m (2.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
 JOIN pg_class t2 ON c.confrelid = t2.oid
@@ -285,14 +488,274 @@ ORDER BY c.conname
 
 
 
-Started GET "/" for ::1 at 2015-02-26 19:26:06 -0600
-  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Processing by Rails::WelcomeController#index as HTML
-  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
-Completed 200 OK in 163ms (Views: 163.4ms | ActiveRecord: 0.0ms)
+Started GET "/api/upc_descriptions" for 127.0.0.1 at 2015-02-27 23:30:08 -0600
+
+NoMethodError (undefined method `all' for Rfid::Product:Class):
+  app/api/rfid/product.rb:5:in `block in <class:Product>'
 
 
-Started GET "/upc_descriptions" for ::1 at 2015-02-26 19:26:10 -0600
-Processing by UpcDescriptionsController#index as HTML
-  [1m[35mUpcDescription Load (4.0ms)[0m  SELECT "upc_descriptions".* FROM "upc_descriptions"
-Completed 200 OK in 13ms (Views: 5.0ms | ActiveRecord: 5.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (18.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (45.0ms)
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 00:00:55 -0600
+
+NoMethodError (undefined method `all' for Rfid::Product:Class):
+  app/api/rfid/product.rb:5:in `block in <class:Product>'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (17.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (44.0ms)
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 00:01:42 -0600
+Reload routes for changed api files
+
+NameError (uninitialized constant Rfid::UpcDescription::UpcDescriptions):
+  app/api/rfid/upc_description.rb:5:in `block in <class:UpcDescription>'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.0ms)
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 00:03:25 -0600
+Reload routes for changed api files
+
+NoMethodError (undefined method `all' for Rfid::UpcDescription:Class):
+  app/api/rfid/upc_description.rb:5:in `block in <class:UpcDescription>'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.0ms)
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 00:08:18 -0600
+Reload routes for changed api files
+
+NoMethodError (undefined method `all' for Rfid::UpcDescription:Class):
+  app/api/rfid/upc_description.rb:5:in `block (2 levels) in <class:UpcDescription>'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (27.0ms)
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 00:10:27 -0600
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT "upc_descriptions".* FROM "upc_descriptions"[0m
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 00:11:53 -0600
+
+NoMethodError (undefined method `call' for #<Class:0x000000051a33d0>):
+  activerecord (4.2.0) lib/active_record/dynamic_matchers.rb:26:in `method_missing'
+  grape (0.11.0) lib/grape/endpoint.rb:192:in `call!'
+  grape (0.11.0) lib/grape/endpoint.rb:184:in `call'
+  rack-mount (0.8.3) lib/rack/mount/prefix.rb:26:in `call'
+  rack-mount (0.8.3) lib/rack/mount/route_set.rb:152:in `block in call'
+  rack-mount (0.8.3) lib/rack/mount/code_generation.rb:96:in `block in recognize'
+  rack-mount (0.8.3) lib/rack/mount/code_generation.rb:68:in `optimized_each'
+  rack-mount (0.8.3) lib/rack/mount/code_generation.rb:95:in `recognize'
+  rack-mount (0.8.3) lib/rack/mount/route_set.rb:141:in `call'
+  grape (0.11.0) lib/grape/api.rb:98:in `call'
+  grape (0.11.0) lib/grape/api.rb:33:in `call!'
+  grape (0.11.0) lib/grape/api.rb:29:in `call'
+  actionpack (4.2.0) lib/action_dispatch/routing/mapper.rb:51:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  c:/Ruby21-x64/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (19.0ms)
+  Rendered c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.0ms)
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 00:12:04 -0600
+Reload routes for changed api files
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT "upc_descriptions".* FROM "upc_descriptions"[0m
+
+
+Started GET "/api/products" for ::1 at 2015-02-28 00:12:09 -0600
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products"
+
+
+Started GET "/api/products" for ::1 at 2015-02-28 00:13:32 -0600
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products"[0m
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 00:13:37 -0600
+  [1m[35mUpcDescription Load (0.0ms)[0m  SELECT "upc_descriptions".* FROM "upc_descriptions"
+
+
+Started GET "/" for ::1 at 2015-02-28 00:24:35 -0600
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 96ms (Views: 96.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2015-02-28 00:24:36 -0600
+
+
+Started GET "/assets/welcome.css?body=1" for ::1 at 2015-02-28 00:24:36 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2015-02-28 00:24:36 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2015-02-28 00:24:36 -0600
+
+
+Started GET "/assets/welcome.js?body=1" for ::1 at 2015-02-28 00:24:36 -0600
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2015-02-28 00:24:36 -0600
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 00:24:38 -0600
+  [1m[36mUpcDescription Load (2.0ms)[0m  [1mSELECT "upc_descriptions".* FROM "upc_descriptions"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-28 00:25:46 -0600
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 72ms (Views: 71.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-02-28 00:25:47 -0600
+
+
+Started GET "/assets/welcome.css?body=1" for ::1 at 2015-02-28 00:25:47 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2015-02-28 00:25:47 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2015-02-28 00:25:47 -0600
+
+
+Started GET "/assets/welcome.js?body=1" for ::1 at 2015-02-28 00:25:47 -0600
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2015-02-28 00:25:47 -0600
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 00:25:51 -0600
+  [1m[36mUpcDescription Load (1.0ms)[0m  [1mSELECT "upc_descriptions".* FROM "upc_descriptions"[0m
+
+
+Started GET "/" for ::1 at 2015-02-28 00:26:20 -0600
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2015-02-28 00:26:20 -0600
+
+
+Started GET "/assets/welcome.css?body=1" for ::1 at 2015-02-28 00:26:20 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2015-02-28 00:26:20 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2015-02-28 00:26:20 -0600
+
+
+Started GET "/assets/welcome.js?body=1" for ::1 at 2015-02-28 00:26:20 -0600
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2015-02-28 00:26:20 -0600
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 00:26:21 -0600
+  [1m[35mUpcDescription Load (1.0ms)[0m  SELECT "upc_descriptions".* FROM "upc_descriptions"
+
+
+Started GET "/api/products" for ::1 at 2015-02-28 00:26:23 -0600
+  [1m[36mProduct Load (3.0ms)[0m  [1mSELECT "products".* FROM "products"[0m
+
+
+Started GET "/" for ::1 at 2015-02-28 10:12:25 -0600
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 612ms (Views: 612.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2015-02-28 10:12:28 -0600
+
+
+Started GET "/assets/welcome.css?body=1" for ::1 at 2015-02-28 10:12:28 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2015-02-28 10:12:28 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2015-02-28 10:12:28 -0600
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2015-02-28 10:12:28 -0600
+
+
+Started GET "/assets/welcome.js?body=1" for ::1 at 2015-02-28 10:12:28 -0600
+
+
+Started GET "/api/upc_descriptions" for ::1 at 2015-02-28 10:12:31 -0600
+  [1m[36mUpcDescription Load (90.1ms)[0m  [1mSELECT "upc_descriptions".* FROM "upc_descriptions"[0m
+
+
+Started GET "/api/products" for ::1 at 2015-02-28 10:12:35 -0600
+  [1m[35mProduct Load (33.4ms)[0m  SELECT "products".* FROM "products"

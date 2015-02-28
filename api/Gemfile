@@ -1,29 +1,25 @@
 source 'https://rubygems.org'
 
+gem 'rails'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'pg', '~> 0.18.1'
+gem 'activerecord-jdbcsqlite3-adapter',  platforms: [:jruby]
+gem 'jquery-rails'
+gem 'grape'
+gem 'grape-entity'
+gem 'uglifier'
+gem 'zip-zip'
 
-gem 'rails', '4.2.0'
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'rubocop'
+  gem 'nokogiri'
+end
 
-gem 'rails-api'
-
-gem 'spring', :group => :development
-
-
-gem 'pg'
-
+# a super serious windows compatibility issue
 gem 'tzinfo'
 gem 'tzinfo-data'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano', :group => :development
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'

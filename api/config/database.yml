@@ -1,27 +1,10 @@
-
-default: &default
+development:
   adapter: postgresql
+  database: rfidbprod
   encoding: utf8
   username: rfidweb
   password: rfidweb
   pool: 5
   port: 5432
-# PostgreSQL 9.4
-#   Ensure the PostgreSQL gem is defined in your Gemfile
-#   gem 'pg'
-development:
-  <<: *default
-  database: rfidbdev
-  host: localhost
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: rfidbtest
-  host: localhost
 
-production:
-  <<: *default
-  database: rfidbprod
