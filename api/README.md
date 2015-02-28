@@ -1,29 +1,34 @@
-Grape on Rails
+RFID API
 ==============
 
-[![Build Status](http://img.shields.io/travis/dblock/grape-on-rails.svg)](https://travis-ci.org/dblock/grape-on-rails)
-[![Dependency Status](https://gemnasium.com/dblock/grape-on-rails.svg)](https://gemnasium.com/dblock/grape-on-rails)
-[![Code Climate](https://codeclimate.com/github/dblock/grape-on-rails.svg)](https://codeclimate.com/github/dblock/grape-on-rails)
-
 A [Grape](http://github.com/intridea/grape) API mounted on Rails.
-
-* [ping](app/api/acme/ping.rb): a hello world `GET` API
-* [post](app/api/acme/post.rb): post JSON data
-* [raise](app/api/acme/raise.rb): raise an error, Rails handling exceptions
-* [protected](app/api/acme/protected.rb): API protected with rudimentary Basic Authentication
 
 See
 ---
 
-An instance of this app is running on [grape-on-rails.herokuapp.com](http://grape-on-rails.herokuapp.com).
+An instance of this app is running on [rfidapi.herokuapp.com](https://rfidapi.herokuapp.com/api/upc_descriptions).
 
 Run
 ---
 
+Local:
+
 ```
 bundle install
+rake db:migrate
 rails s
 ```
 
-Try http://localhost:3000/api/ping or http://localhost:3000/api/protected/ping with _username_ and _password_.
+Heroku:
+Step by step instructions for setting up an API on Heroku with Grape.
 
+- First create your rails application ``` rails new yourapp ```
+- add the grape and grape-entity gems
+- follow the grape documentation for creating your RestFUL API
+- make a git repo ``` git init ```
+- add files ``` git add . ```
+- commit ``` git commit -m "Adds Rails API with Grape" ```
+- create heroku ``` heroku create ```
+- push to heroku ``` git push heroku master ```
+- setup database ``` heroku run rake db:migrate ```
+- open your new app! ``` heroku open ```
